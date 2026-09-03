@@ -19,7 +19,6 @@ class Playground: PluginInterface {
             // Use a small delay to ensure the web page's own scripts have finished running.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.injectPlaygroundUI()
-                self.runDiagnostics()
             }
         }
     }
