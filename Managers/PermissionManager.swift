@@ -20,16 +20,6 @@ class PermissionManager: NSObject { // Add CLLocationManagerDelegate
         if context.permissionsOnLaunch.contains("NOTIFICATIONS") {
             requestNotificationPermission()
         }
-        
-        if context.permissionsOnLaunch.contains("LOCATION") {
-            // We just need to trigger the LocationPlugin to ask.
-            // A simple way is to instantiate its manager so it can request.
-            if let locationPlugin = PluginManager.shared.getPlugin(named: "Location") as? LocationPlugin {
-                print("Triggering initial location permission request via LocationPlugin.")
-                locationPlugin.requestInitialPermission()
-            }
-        }
-    }
     
     // --- Notification Permissions ---
     private func requestNotificationPermission() {
