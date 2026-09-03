@@ -20,6 +20,7 @@ class PermissionManager: NSObject { // Add CLLocationManagerDelegate
         if context.permissionsOnLaunch.contains("NOTIFICATIONS") {
             requestNotificationPermission()
         }
+     }
     
     // --- Notification Permissions ---
     private func requestNotificationPermission() {
