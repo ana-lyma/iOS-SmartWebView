@@ -24,15 +24,6 @@ class Playground: PluginInterface {
         }
     }
     
-    // Runs automated tests/actions on launch.
-    private func runDiagnostics() {
-        if let firebasePlugin = PluginManager.shared.getPlugin(named: "Firebase") as? FirebasePlugin {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                firebasePlugin.showTestNotification()
-            }
-        }
-    }
-    
     // Injects the floating UI into the web page.
     private func injectPlaygroundUI() {
         // Create a JSON object of active plugins.
