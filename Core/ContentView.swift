@@ -6,6 +6,7 @@ struct ContentView: View {
     private let initialURL = SWVContext.shared.initialURL
 
     @State private var showSplash = true
+    @State private var splashImage: UIImage? = nil
 
     var body: some View {
         ZStack {
@@ -22,32 +23,11 @@ struct ContentView: View {
                     Color.white
                         .ignoresSafeArea()
 
-                    if let splashURL = Bundle.main.url(
-                        forResource: "splash_njci",
-                        withExtension: "png"
-                    ) {
-
-                        print("✅ SPLASH ENCONTRADA: \(splashURL.path)")
-
-                        if let splashImage = UIImage(
-                            contentsOfFile: splashURL.path
-                        ) {
-
-                            print("✅ SPLASH CARREGADA COMO IMAGEM")
-
-                            Image(uiImage: splashImage)
-                                .resizable()
-                                .scaledToFit()
-                                .ignoresSafeArea()
-
-                        } else {
-
-                            print("❌ ARQUIVO ENCONTRADO, MAS NÃO FOI POSSÍVEL ABRIR A IMAGEM")
-                        }
-
-                    } else {
-
-                        print("❌ SPLASH NÃO ENCONTRADA NO BUNDLE")
+                    if let splashImage = splashImage {
+                        Image(uiImage: splashImage)
+                            .resizable()
+                            .scaledToFit()
+                            .ignoresSafeArea()
                     }
                 }
                 .zIndex(10)
@@ -55,6 +35,27 @@ struct ContentView: View {
             }
         }
         .onAppear {
+
+            if let splashURL = Bundle.main.url(
+                forResource: "splash_njci",
+                withExtension: "png"
+            ) {
+
+                print("✅ SPLASH ENCONTRADA: \(splashURL.path)")
+
+                if let image = UIImage(
+                    contentsOfFile: splashURL.path
+                ) {
+                    print("✅ SPLASH CARREGADA COMO IMAGEM")
+                    splashImage = image
+                } else {
+                    print("❌ ARQUIVO ENCONTRADO, MAS A IMAGEM NÃO ABRIU")
+                }
+
+            } else {
+                print("❌ SPLASH NÃO ENCONTRADA NO BUNDLE")
+            }
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 withAnimation(.easeOut(duration: 0.3)) {
                     showSplash = false
