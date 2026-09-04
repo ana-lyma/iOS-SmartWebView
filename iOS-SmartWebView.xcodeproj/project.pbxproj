@@ -12,6 +12,7 @@
 		8F0C927D2E283A080043A6D9 /* iOS_SmartWebViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C927C2E283A080043A6D9 /* iOS_SmartWebViewApp.swift */; };
 		8F0C927E2E283A080043A6D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C927B2E283A080043A6D9 /* ContentView.swift */; };
 		8F0C92802E283A1B0043A6D9 /* swv.properties in Resources */ = {isa = PBXBuildFile; fileRef = 8F0C927F2E283A1B0043A6D9 /* swv.properties */; };
+        9A0D1E2F3A4B5C6D7E8F9012 /* splash_njci.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D1E2F3A4B5C6D7E8F9013 /* splash_njci.png */; };
 		8F0C92822E283A340043A6D9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92812E283A340043A6D9 /* WebView.swift */; };
 		8F0C92872E283B7C0043A6D9 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92862E283B7C0043A6D9 /* PluginManager.swift */; };
 		8F0C92892E283BA60043A6D9 /* PluginInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92882E283BA60043A6D9 /* PluginInterface.swift */; };
@@ -31,6 +32,7 @@
 		8F0C927B2E283A080043A6D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8F0C927C2E283A080043A6D9 /* iOS_SmartWebViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_SmartWebViewApp.swift; sourceTree = "<group>"; };
 		8F0C927F2E283A1B0043A6D9 /* swv.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = swv.properties; sourceTree = "<group>"; };
+        9A0D1E2F3A4B5C6D7E8F9013 /* splash_njci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_njci.png; sourceTree = "<group>"; };
 		8F0C92812E283A340043A6D9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8F0C92862E283B7C0043A6D9 /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
 		8F0C92882E283BA60043A6D9 /* PluginInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginInterface.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				8F7E7BD22E340264002848D5 /* web */,
 				8F0C927F2E283A1B0043A6D9 /* swv.properties */,
+                9A0D1E2F3A4B5C6D7E8F9013 /* splash_njci.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0C92802E283A1B0043A6D9 /* swv.properties in Resources */,
+                9A0D1E2F3A4B5C6D7E8F9012 /* splash_njci.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
