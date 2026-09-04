@@ -23,20 +23,32 @@ struct ContentView: View {
                         .ignoresSafeArea()
 
                     if let splashURL = Bundle.main.url(
-    forResource: "splash_njci",
-    withExtension: "png"
-),
-let splashImage = UIImage(
-    contentsOfFile: splashURL.path
-) {
+                        forResource: "splash_njci",
+                        withExtension: "png"
+                    ) {
 
-    Image(uiImage: splashImage)
-        .resizable()
-        .scaledToFit()
-        .ignoresSafeArea()
-}
+                        print("✅ SPLASH ENCONTRADA: \(splashURL.path)")
 
-                
+                        if let splashImage = UIImage(
+                            contentsOfFile: splashURL.path
+                        ) {
+
+                            print("✅ SPLASH CARREGADA COMO IMAGEM")
+
+                            Image(uiImage: splashImage)
+                                .resizable()
+                                .scaledToFit()
+                                .ignoresSafeArea()
+
+                        } else {
+
+                            print("❌ ARQUIVO ENCONTRADO, MAS NÃO FOI POSSÍVEL ABRIR A IMAGEM")
+                        }
+
+                    } else {
+
+                        print("❌ SPLASH NÃO ENCONTRADA NO BUNDLE")
+                    }
                 }
                 .zIndex(10)
                 .transition(.opacity)
