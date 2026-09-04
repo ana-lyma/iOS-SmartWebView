@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
 
@@ -21,10 +22,21 @@ struct ContentView: View {
                     Color.white
                         .ignoresSafeArea()
 
-                    Image("splash_njci")
-                        .resizable()
-                        .scaledToFit()
-                        .ignoresSafeArea()
+                    if let splashURL = Bundle.main.url(
+    forResource: "splash_njci",
+    withExtension: "png"
+),
+let splashImage = UIImage(
+    contentsOfFile: splashURL.path
+) {
+
+    Image(uiImage: splashImage)
+        .resizable()
+        .scaledToFit()
+        .ignoresSafeArea()
+}
+
+                
                 }
                 .zIndex(10)
                 .transition(.opacity)
