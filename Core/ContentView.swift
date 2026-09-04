@@ -1,3 +1,4 @@
+```swift
 import SwiftUI
 import UIKit
 
@@ -8,14 +9,23 @@ struct ContentView: View {
     @State private var showSplash = true
     @State private var splashImage: UIImage? = nil
 
+    @StateObject private var networkMonitor = NetworkMonitor()
+
     var body: some View {
         ZStack {
 
-            if let url = initialURL {
-                WebView(url: url)
-                    .ignoresSafeArea()
+            if networkMonitor.isConnected {
+
+                if let url = initialURL {
+                    WebView(url: url)
+                        .ignoresSafeArea()
+                } else {
+                    Text("Erro ao carregar o atendimento.")
+                }
+
             } else {
-                Text("Erro ao carregar o atendimento.")
+
+                NoInternetView()
             }
 
             if showSplash {
@@ -34,32 +44,60 @@ struct ContentView: View {
                 .transition(.opacity)
             }
         }
-        .onAppear {
+        ```swift
+.onAppear {
 
-            if let splashURL = Bundle.main.url(
-                forResource: "splash_njci",
-                withExtension: "png"
-            ) {
+    if let splashURL = Bundle.main.url(
+        forResource: "splash_njci",
+        withExtension: "png"
+    ),
+    let image = UIImage(contentsOfFile: splashURL.path) {
+        splashImage = image
+    }
 
-                print("✅ SPLASH ENCONTRADA: \(splashURL.path)")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        withAnimation(.easeOut(duration: 0.3)) {
+            showSplash = false
+        }
+    }
+}
+```
 
-                if let image = UIImage(
-                    contentsOfFile: splashURL.path
-                ) {
-                    print("✅ SPLASH CARREGADA COMO IMAGEM")
-                    splashImage = image
-                } else {
-                    print("❌ ARQUIVO ENCONTRADO, MAS A IMAGEM NÃO ABRIU")
-                }
+    }
+}
 
-            } else {
-                print("❌ SPLASH NÃO ENCONTRADA NO BUNDLE")
-            }
+struct NoInternetView: View {
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                withAnimation(.easeOut(duration: 0.3)) {
-                    showSplash = false
-                }
+    var body: some View {
+        ZStack {
+
+            Color.white
+                .ignoresSafeArea()
+
+            VStack(spacing: 20) {
+
+                Image(systemName: "wifi.slash")
+                    .font(.system(size: 70))
+                    .foregroundColor(
+                        Color(
+                            red: 53 / 255,
+                            green: 130 / 255,
+                            blue: 184 / 255
+                        )
+                    )
+
+                Text("Sem conexão com a internet")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
+
+                Text(
+                    "Conecte-se a uma rede Wi-Fi ou ative os dados móveis para iniciar o atendimento."
+                )
+                .font(.body)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 35)
             }
         }
     }
@@ -68,3 +106,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+```
+
