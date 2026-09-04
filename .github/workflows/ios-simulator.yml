@@ -26,6 +26,17 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             build
 
+      - name: Garantir splash dentro do aplicativo
+        run: |
+          APP_PATH=$(find build/DerivedData/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
+
+          echo "Aplicativo encontrado em: $APP_PATH"
+
+          cp Resources/splash_njci.png "$APP_PATH/splash_njci.png"
+
+          echo "Verificando splash:"
+          ls -lh "$APP_PATH/splash_njci.png"
+
       - name: Preparar aplicativo do simulador
         run: |
           mkdir -p build/SimulatorApp
