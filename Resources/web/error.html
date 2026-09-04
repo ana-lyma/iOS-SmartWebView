@@ -1,20 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
+
+    <title>Erro ao carregar chat</title>
+
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; text-align: center; }
-        .container { max-width: 300px; }
-        h1 { color: #1c1e21; }
-        p { color: #65676b; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .error-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .retry {
+            position: absolute;
+            left: 50%;
+            bottom: 35px;
+            transform: translateX(-50%);
+
+            padding: 14px 28px;
+
+            background: #1769d2;
+            color: #ffffff;
+
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+
+            border-radius: 12px;
+            white-space: nowrap;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .retry:active {
+            opacity: 0.8;
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>❌<br>An Error Occurred</h1>
-        <p>We're sorry, but something went wrong. Please try restarting the app.</p>
-    </div>
+
+    <img
+        src="erro_carregar.png"
+        class="error-image"
+        alt="Erro ao carregar chat"
+    >
+
+    <a
+        href="https://netjacarei.sz.chat/webchat/v2/?cid=6a673cd68fa9d66e061aa25b&amp;host=https://netjacarei.sz.chat"
+        class="retry"
+    >
+        Tentar novamente
+    </a>
+
 </body>
+
 </html>
